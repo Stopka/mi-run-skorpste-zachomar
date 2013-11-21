@@ -28,8 +28,9 @@ public class _new extends InstructionElem {
     @Override
     public void ExcecuteInstruction(Stack<Object> VariableStack, ConstantPoolElem[] constantPool, LocalVariableTableAttribute table) {
         try {
-            VariableStack.push((constantPool[index - 1]));
-
+            ConstantPoolElem e = constantPool[index -1];
+            Object o = e.GetValue();
+            VariableStack.push(e.GetValue());
         } catch (Exception e) {
             System.out.println("ERR");
         }

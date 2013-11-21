@@ -19,7 +19,6 @@ public class AttributeInfoUndefined extends AttributeInfo {
     private byte[] info;
 
     public AttributeInfoUndefined(int attrNIndex, Queue<Byte> queue) {
-        System.out.println("CREATING UNDEFINED ATTRIBUTEINFO");
         attributeNameIndex = attrNIndex;
         attributeLength = (StaticLibrary.ByteToInt(queue.poll()) << 24) + (StaticLibrary.ByteToInt(queue.poll()) << 16)
                 + (StaticLibrary.ByteToInt(queue.poll()) << 8) + StaticLibrary.ByteToInt(queue.poll());

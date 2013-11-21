@@ -4,6 +4,7 @@
  */
 package Attributes;
 
+import Attributes.LocalVariableTableAttribute.LocalVariable;
 import ConstantPoolTypes.ConstantPoolElem;
 import Instructions.ControlElem;
 import Instructions.InstructionElem;
@@ -131,11 +132,12 @@ public class CodeAttribute extends AttributeInfo {
         }
     }
 
-    public void AssignLocalVariables(Stack<Object> stack) {
-        int i = 0;
-        while (!stack.empty() && i < localVariableTable.getLocalVariableTable().length) {
-            localVariableTable.getLocalVariableTable()[i++].value = stack.pop();
+    public void AssignLocalVariables(Stack<Object> stack, Class[] classes) {
+        LocalVariable[] var = localVariableTable.getLocalVariableTable();
+        for (int j = 0; j < classes.length; j++) {
+            localVariableTable.getLocalVariableTable()[j + 1].value = stack.pop();
         }
+        localVariableTable.getLocalVariableTable()[0].value = stack.pop();//snad staci takhle
     }
 
     public void InitVariableStack(Stack<Object> stack) {
@@ -143,10 +145,9 @@ public class CodeAttribute extends AttributeInfo {
     }
 
     public void ExecuteCode() {
-        System.out.println("CODE");
         for (int i = 0; i < instructions.length; i++) {
-            System.out.println(instructions[i]);
-            instructions[i].ExcecuteInstruction(localVariableStack, pool, localVariableTable);
+         //   System.out.println(instructions[i]);
+                 instructions[i].ExcecuteInstruction(localVariableStack, pool, localVariableTable);
             if (instructions[i] instanceof ControlElem) {
                 ControlElem control = (ControlElem) instructions[i];
                 int offset = control.JumpTo();

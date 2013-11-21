@@ -14,6 +14,7 @@ import Descriptors.MethodDescriptor;
 import Infos.MethodInfo;
 import Parser.Parser;
 import java.io.File;
+import java.io.FileReader;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -57,42 +58,41 @@ public class invokespecial extends InstructionElem {
         CONSTANT_Methodref_info i = (CONSTANT_Methodref_info) constantPool[index - 1];
         MethodInfo info = Parser.instance.getMethodByName(i.getName().toString(), i.getClassName());
         if (info != null) {
-            CodeAttribute attr = info.GetCodeAttribute(constantPool);
-            attr.AssignLocalVariables(VariableStack);
-            attr.ExecuteCode();
-            if (attr.HasReturnValue()) {
-                VariableStack.push(attr.getReturnValue());
+            if ("<init>".equals(i.getName().toString())) {
+                CodeAttribute attr = info.GetCodeAttribute(constantPool);
+                CONSTANT_NameAndType_info nt = (CONSTANT_NameAndType_info) i.getName();
+                Class[] arr = nt.GetMethodDescriptor().getInput();
+                attr.AssignLocalVariables(VariableStack, arr);
+                attr.ExecuteCode();
+            } else {
+                throw new UnsupportedOperationException();
             }
         } else {
-            System.out.println(i.getName());
             if ("<init>".equals(i.getName().toString())) {
-                System.out.println("INIIIT");
                 construct(i, VariableStack);
                 return;
             } else {
                 throw new UnsupportedOperationException();
             }
-
         }
     }
 
     private void construct(CONSTANT_Methodref_info info, Stack<Object> VariableStack) {
         try {
             CONSTANT_NameAndType_info nt = (CONSTANT_NameAndType_info) info.getName();
-            System.out.println("DES");
-            MethodDescriptor desc = nt.GetDescriptor();
+            MethodDescriptor desc = nt.GetMethodDescriptor();
             Class c = StaticLibrary.LoadClass(info.getClassName());
             List<Object> args = new LinkedList<>();
             Constructor construct;
             Class[] classes = desc.getInput();
+            Class out = desc.getOutput();
             for (int i = 0; i < classes.length; i++) {
-                ConstantPoolElem o = (ConstantPoolElem) VariableStack.pop();
-                args.add(o.GetValue());
+                args.add(VariableStack.pop());
             }
             construct = c.getConstructor(classes);
-            construct.newInstance(args.toArray());
+            VariableStack.push(construct.newInstance(args.toArray()));
         } catch (Exception ex) {
-            System.out.println("ERR");
+            ex.printStackTrace(); //FileReader new (filepath) pada pri neexistujicim souboru
         }
     }
 }

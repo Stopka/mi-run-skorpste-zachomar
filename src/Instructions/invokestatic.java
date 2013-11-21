@@ -7,6 +7,7 @@ package Instructions;
 import Attributes.CodeAttribute;
 import Attributes.LocalVariableTableAttribute;
 import ConstantPoolTypes.CONSTANT_Methodref_info;
+import ConstantPoolTypes.CONSTANT_NameAndType_info;
 import ConstantPoolTypes.ConstantPoolElem;
 import Infos.MethodInfo;
 import Parser.Parser;
@@ -34,8 +35,11 @@ public class invokestatic extends InstructionElem {
         CONSTANT_Methodref_info i = (CONSTANT_Methodref_info) constantPool[index - 1];
         MethodInfo info = Parser.instance.getMethodByName(i.getName().toString(), i.getClassName());
         if (info != null) {
+
             CodeAttribute attr = info.GetCodeAttribute(constantPool);
-            attr.AssignLocalVariables(VariableStack);
+            CONSTANT_NameAndType_info nt = (CONSTANT_NameAndType_info) i.getName();
+            Class[] arr = nt.GetMethodDescriptor().getInput();
+            attr.AssignLocalVariables(VariableStack, arr);
             attr.ExecuteCode();
             if (attr.HasReturnValue()) {
                 VariableStack.push(attr.getReturnValue());

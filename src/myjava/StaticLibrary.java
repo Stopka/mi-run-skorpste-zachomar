@@ -26,7 +26,6 @@ public class StaticLibrary {
         try {
             return Class.forName(name);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(StaticLibrary.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }

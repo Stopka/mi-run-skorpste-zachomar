@@ -28,6 +28,7 @@ public class AttributeGenerator {
             case "SourceFile":
                 return new SourceFileAttribute(index, queue);
         }
+        System.out.println(name + " attribute undefined, skipping.");
         return new AttributeInfoUndefined(index, queue);
     }
 }

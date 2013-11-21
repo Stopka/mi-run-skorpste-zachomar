@@ -8,23 +8,35 @@ import Attributes.LocalVariableTableAttribute;
 import ConstantPoolTypes.ConstantPoolElem;
 import java.util.Queue;
 import java.util.Stack;
+import myjava.StaticLibrary;
 
 /**
  *
  * @author Zachy
  */
-public class ifnull extends InstructionElem {
+public class ifnull extends InstructionElem implements ControlElem {
 
     int branch;
+    boolean jump = false;
 
     public ifnull(Queue<Byte> queue, int pos) {
         super(pos);
-        branch = (queue.poll() << 8) + queue.poll();
+        branch = (StaticLibrary.ByteToInt(queue.poll()) << 8) + StaticLibrary.ByteToInt(queue.poll());
     }
 
     @Override
     public void ExcecuteInstruction(Stack<Object> VariableStack, ConstantPoolElem[] constantPool, LocalVariableTableAttribute table) {
-        System.out.println("sdfds");
-        throw new UnsupportedOperationException();
+        Object o = VariableStack.pop();
+        if (o == null) {
+            jump = true;
+        }
+    }
+
+    @Override
+    public int JumpTo() {
+        if (jump) {
+            return branch;
+        }
+        return -1;
     }
 }

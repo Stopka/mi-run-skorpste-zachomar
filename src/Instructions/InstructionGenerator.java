@@ -104,7 +104,13 @@ public class InstructionGenerator {
             return new astore_(bajt, currentPosition);
         } else if (b == 0x4f) {
             return new iastore(currentPosition);
-        } else if (b >= 0x50 && b < 0x59) {
+        } else if (b >= 0x50 && b < 0x57) {
+            System.out.println(bajt);
+            System.out.println(b); //TO DEFINE----------------------------
+            return null;
+        } else if (b == 0x57) {
+            return new pop(currentPosition);
+        } else if (b == 0x58) {
             System.out.println(bajt);
             System.out.println(b); //TO DEFINE----------------------------
             return null;

@@ -14,15 +14,17 @@ import myjava.StaticLibrary;
  *
  * @author Zachy
  */
-public class ldc_w extends InstructionElem{
-int index;
-    public ldc_w(Queue<Byte> queue, int pos){
+public class ldc_w extends InstructionElem {
+
+    int index;
+
+    public ldc_w(Queue<Byte> queue, int pos) {
         super(pos);
         index = (StaticLibrary.ByteToInt(queue.poll()) << 8) + StaticLibrary.ByteToInt(queue.poll());
     }
+
     @Override
     public void ExcecuteInstruction(Stack<Object> VariableStack, ConstantPoolElem[] constantPool, LocalVariableTableAttribute table) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
 }
