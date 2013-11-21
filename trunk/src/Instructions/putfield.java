@@ -5,6 +5,8 @@
 package Instructions;
 
 import Attributes.LocalVariableTableAttribute;
+import ConstantPoolTypes.CONSTANT_NameAndType_info;
+import ConstantPoolTypes.CONSTANT_Utf8_info;
 import ConstantPoolTypes.ConstantPoolElem;
 import java.util.Queue;
 import java.util.Stack;
@@ -12,7 +14,7 @@ import myjava.StaticLibrary;
 
 /**
  *
- * @author Zachy
+ * @author Zachy set field in Object
  */
 public class putfield extends InstructionElem {
 
@@ -25,6 +27,14 @@ public class putfield extends InstructionElem {
 
     @Override
     public void ExcecuteInstruction(Stack<Object> VariableStack, ConstantPoolElem[] constantPool, LocalVariableTableAttribute table) {
+        ConstantPoolElem e = constantPool[index - 1];
+        CONSTANT_NameAndType_info info = (CONSTANT_NameAndType_info) e.GetValue();
+        Object o = info.GetFieldDescriptor();
+        Object val = VariableStack.pop();
+        Object oref = VariableStack.pop();
         throw new UnsupportedOperationException();
+    }
+
+    private void assign(CONSTANT_Utf8_info info, Object value, Object oref) {
     }
 }

@@ -8,10 +8,14 @@ import Attributes.CodeAttribute;
 import Attributes.LocalVariableTableAttribute;
 import ConstantPoolTypes.CONSTANT_Fieldref_info;
 import ConstantPoolTypes.CONSTANT_Methodref_info;
+import ConstantPoolTypes.CONSTANT_NameAndType_info;
 import ConstantPoolTypes.ConstantPoolElem;
+import Descriptors.MethodDescriptor;
 import Infos.MethodInfo;
 import Parser.Parser;
+import java.io.BufferedReader;
 import java.io.PrintStream;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.LinkedList;
 import java.util.List;
@@ -39,36 +43,36 @@ public class invokevirtual extends InstructionElem {
         MethodInfo info = Parser.instance.getMethodByName(i.getName().toString(), i.getClassName());
         if (info != null) {
             CodeAttribute attr = info.GetCodeAttribute(constantPool);
-            attr.AssignLocalVariables(VariableStack);
+            CONSTANT_NameAndType_info nt = (CONSTANT_NameAndType_info) i.getName();
+            Class[] arr = nt.GetMethodDescriptor().getInput();
+            attr.AssignLocalVariables(VariableStack, arr);
             attr.ExecuteCode();
-            if (attr.HasReturnValue()) {
-                VariableStack.push(attr.getReturnValue());
-            }
+            throw new UnsupportedOperationException("Nevyresene navratove hodnoty");
+            /*  if (attr.HasReturnValue()) {
+             VariableStack.push(attr.getReturnValue());
+             }*/
         } else {
             try {
+                CONSTANT_NameAndType_info nt = (CONSTANT_NameAndType_info) i.getName();
+                MethodDescriptor desc = nt.GetMethodDescriptor();
                 Class c = StaticLibrary.LoadClass(i.getClassName());
                 List<Object> args = new LinkedList<>();
-                List<Class> classes = new LinkedList<>();
-                CONSTANT_Fieldref_info met = null;
-                while (!VariableStack.empty()) {
-                    ConstantPoolElem o = (ConstantPoolElem) VariableStack.pop();
-                    if (o instanceof CONSTANT_Fieldref_info) {
-                        met = (CONSTANT_Fieldref_info) o;
-                        break;
-                    } else {
-                        args.add(o.GetValue());
-                        classes.add(o.GetValue().getClass());
-                    }
-                    break;
+                Class[] classes = desc.getInput();
+                Class out = desc.getOutput();
+                for (int j = 0; j < classes.length; j++) {
+                    args.add(VariableStack.pop());
                 }
-                Method m = c.getDeclaredMethod(i.getName().toString(), classes.toArray(new Class[0]));
-                Object o = null;
-                try{
-                   o= c.newInstance();
-                }catch(InstantiationException e){
-                    o = System.out;
+                Method m = c.getDeclaredMethod(i.getName().toString(), classes);
+                Object o = VariableStack.pop();
+                Object retval = null;
+                try {
+                    retval = m.invoke(o, args.toArray());
+                } catch (Exception e) {
+                    retval = m.invoke(System.out, args.toArray());
                 }
-                m.invoke(o, args.toArray());
+                if (out != null) {
+                    VariableStack.push(retval);
+                }
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }

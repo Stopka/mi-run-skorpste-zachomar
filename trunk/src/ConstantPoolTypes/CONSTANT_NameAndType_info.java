@@ -4,6 +4,7 @@
  */
 package ConstantPoolTypes;
 
+import Descriptors.FieldDescriptor;
 import Descriptors.MethodDescriptor;
 import Parser.Parser;
 
@@ -11,7 +12,8 @@ import Parser.Parser;
  *
  * @author Zachy
  */
-public class CONSTANT_NameAndType_info extends ConstantPoolElem{
+public class CONSTANT_NameAndType_info extends ConstantPoolElem {
+
     int name_index;
     int descriptor_index;
 
@@ -23,14 +25,19 @@ public class CONSTANT_NameAndType_info extends ConstantPoolElem{
 
     @Override
     public String toString() {
-        return pool[name_index-1] + "";
+        return pool[name_index - 1] + "";
     }
 
     @Override
     public Object GetValue() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return pool[name_index - 1].GetValue();
     }
-    public MethodDescriptor GetDescriptor(){
-        return new MethodDescriptor(pool[descriptor_index -1].toString());
+
+    public MethodDescriptor GetMethodDescriptor() {
+        return new MethodDescriptor(pool[descriptor_index - 1].toString());
+    }
+
+    public FieldDescriptor GetFieldDescriptor() {
+        return new FieldDescriptor(pool[descriptor_index - 1].toString(), pool[name_index - 1].toString());
     }
 }

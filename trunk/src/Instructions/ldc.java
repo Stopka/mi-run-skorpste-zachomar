@@ -25,6 +25,6 @@ public class ldc extends InstructionElem {
 
     @Override
     public void ExcecuteInstruction(Stack<Object> VariableStack, ConstantPoolElem[] constantPool, LocalVariableTableAttribute table) {
-        VariableStack.push(constantPool[index-1]);
+        VariableStack.push(constantPool[index - 1].GetValue());
     }
 }

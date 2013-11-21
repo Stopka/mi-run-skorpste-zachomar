@@ -28,6 +28,6 @@ public class CONSTANT_Class extends ConstantPoolElem {
     @Override
     public Object GetValue() {
         Class c = StaticLibrary.LoadClass(pool[nameIndex - 1].toString());
-        return c.getDeclaredClasses();
+        return c;
     }
 }

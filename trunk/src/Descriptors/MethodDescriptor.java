@@ -29,7 +29,7 @@ public class MethodDescriptor {
             } else {
                 for (int j = i; j < istr.length(); j++) {
                     if (istr.charAt(j) == ';') {
-                        classes.add(StaticLibrary.LoadClass(istr.substring(i+1, j)));
+                        classes.add(StaticLibrary.LoadClass(istr.substring(i + 1, j)));
                         i = j;
                         break;
                     }
@@ -38,6 +38,12 @@ public class MethodDescriptor {
             }
         }
         input = classes.toArray(new Class[0]);
+        String ostr = arr[1];
+        if (ostr.length() == 1) {
+            output = ResolveString(ostr.charAt(0));
+        } else {
+            output = StaticLibrary.LoadClass(ostr.substring(1, ostr.length() - 1));
+        }
     }
 
     public Class[] getInput() {
@@ -45,7 +51,7 @@ public class MethodDescriptor {
     }
 
     public Class getOutput() {
-        throw new UnsupportedOperationException();
+        return output;
     }
 
     private Class ResolveString(char s) {
@@ -74,7 +80,10 @@ public class MethodDescriptor {
             return boolean.class;
         }
         if (s == '[') {
-            return Array.class;
+            throw new UnsupportedOperationException("Pole jeste neumime");
+        }
+        if (s == 'V') {
+            return void.class;
         }
         return null;
     }
