@@ -14,7 +14,7 @@ import myjava.StaticLibrary;
  *
  * @author Zachy
  */
-public class _goto extends InstructionElem implements ControlElem {
+public class _goto extends ControlElem {
 
     short index;
 
@@ -32,5 +32,10 @@ public class _goto extends InstructionElem implements ControlElem {
     @Override
     public int JumpTo() {
         return index;
+    }
+
+    @Override
+    public boolean isToJump() {
+        return true;
     }
 }

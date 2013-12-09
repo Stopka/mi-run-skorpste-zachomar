@@ -5,7 +5,10 @@
 package Instructions;
 
 import Attributes.LocalVariableTableAttribute;
+import ConstantPoolTypes.CONSTANT_NameAndType_info;
 import ConstantPoolTypes.ConstantPoolElem;
+import Descriptors.FieldDescriptor;
+import Heap.Instance;
 import java.util.Queue;
 import java.util.Stack;
 import myjava.StaticLibrary;
@@ -25,8 +28,12 @@ public class getfield  extends InstructionElem {
 
     @Override
     public void ExcecuteInstruction(Stack<Object> VariableStack, ConstantPoolElem[] constantPool, LocalVariableTableAttribute table) {
-        Object type = VariableStack.pop();
-        VariableStack.push(constantPool[index - 1]);
-        throw new UnsupportedOperationException();
+        Instance ref = (Instance)((Heap.HeapRef)VariableStack.pop()).get();
+        
+        ConstantPoolElem e = constantPool[index - 1];
+        CONSTANT_NameAndType_info info = (CONSTANT_NameAndType_info) e.GetValue();
+        FieldDescriptor fd = info.GetFieldDescriptor();
+        
+        VariableStack.push(ref.get(fd));
     }
 }

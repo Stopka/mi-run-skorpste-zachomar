@@ -25,6 +25,6 @@ public class astore_ extends InstructionElem {
     @Override
     public void ExcecuteInstruction(Stack<Object> VariableStack, ConstantPoolElem[] constantPool, LocalVariableTableAttribute table) {
         Object o =  VariableStack.pop();
-        table.getLocalVariableTable()[index].value = o;
+        table.setLocalVariable(index, o);
     }
 }

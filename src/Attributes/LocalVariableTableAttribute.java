@@ -54,4 +54,21 @@ public class LocalVariableTableAttribute extends AttributeInfo {
     public LocalVariable[] getLocalVariableTable() {
         return localVariableTable;
     }
+    
+    public Object getLocalVariable(int index){
+        for(LocalVariable var:localVariableTable){
+            if(var.index==index){
+                return var.value;
+            }
+        }
+        return null;
+    }
+    
+    public void setLocalVariable(int index,Object value){
+        for(LocalVariable var:localVariableTable){
+            if(var.index==index){
+                 var.value=value;
+            }
+        }
+    }
 }

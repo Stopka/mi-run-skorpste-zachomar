@@ -11,6 +11,8 @@ import ConstantPoolTypes.CONSTANT_Methodref_info;
 import ConstantPoolTypes.CONSTANT_NameAndType_info;
 import ConstantPoolTypes.ConstantPoolElem;
 import Descriptors.MethodDescriptor;
+import Heap.HeapRef;
+import Heap.InbuiltObject;
 import Infos.MethodInfo;
 import Parser.Parser;
 import java.io.File;
@@ -58,16 +60,24 @@ public class invokespecial extends InstructionElem {
         CONSTANT_Methodref_info i = (CONSTANT_Methodref_info) constantPool[index - 1];
         MethodInfo info = Parser.instance.getMethodByName(i.getName().toString(), i.getClassName());
         if (info != null) {
-            if ("<init>".equals(i.getName().toString())) {
+            //if ("<init>".equals(i.getName().toString())) {
                 CodeAttribute attr = info.GetCodeAttribute(constantPool);
                 CONSTANT_NameAndType_info nt = (CONSTANT_NameAndType_info) i.getName();
                 Class[] arr = nt.GetMethodDescriptor().getInput();
                 attr.AssignLocalVariables(VariableStack, arr);
                 attr.ExecuteCode();
-            } else {
-                throw new UnsupportedOperationException();
-            }
+                if(attr.HasReturnValue()){
+                    VariableStack.push(attr.getReturnValue());
+                }
+            /*} else {
+                //TODO volání metody
+                
+            }*/
         } else {
+            if("java/lang/Object".equals(i.getClassName())){
+                VariableStack.pop();
+                return;
+            }
             if ("<init>".equals(i.getName().toString())) {
                 construct(i, VariableStack);
                 return;
@@ -90,7 +100,8 @@ public class invokespecial extends InstructionElem {
                 args.add(VariableStack.pop());
             }
             construct = c.getConstructor(classes);
-            VariableStack.push(construct.newInstance(args.toArray()));
+            InbuiltObject ibo=(InbuiltObject)((HeapRef)VariableStack.pop()).get();
+            ibo.setInstance(construct.newInstance(args.toArray()));
         } catch (Exception ex) {
             ex.printStackTrace(); //FileReader new (filepath) pada pri neexistujicim souboru
         }

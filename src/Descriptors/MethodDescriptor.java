@@ -23,6 +23,11 @@ public class MethodDescriptor {
         String istr = arr[0].substring(1);
         List<Class> classes = new LinkedList<>();
         for (int i = 0; i < istr.length(); i++) {
+            if(istr.charAt(i)=='['){
+                classes.add(byte[].class);
+                i++;
+                continue;
+            }
             Class c = ResolveString(istr.charAt(i));
             if (c != null) {
                 classes.add(c);
@@ -39,8 +44,11 @@ public class MethodDescriptor {
         }
         input = classes.toArray(new Class[0]);
         String ostr = arr[1];
-        if (ostr.length() == 1) {
+        if (ostr.length() == 1 || ostr.charAt(0)=='[') {
             output = ResolveString(ostr.charAt(0));
+            if(output==null){
+                output=byte[].class;
+            }
         } else {
             output = StaticLibrary.LoadClass(ostr.substring(1, ostr.length() - 1));
         }
@@ -79,9 +87,9 @@ public class MethodDescriptor {
         if (s == 'Z') {
             return boolean.class;
         }
-        if (s == '[') {
+        /*if (s == '[') {
             throw new UnsupportedOperationException("Pole jeste neumime");
-        }
+        } */
         if (s == 'V') {
             return void.class;
         }

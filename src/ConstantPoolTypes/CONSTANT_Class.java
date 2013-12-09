@@ -4,6 +4,8 @@
  */
 package ConstantPoolTypes;
 
+import Heap.InbuiltObject;
+import Heap.Instance;
 import Parser.Parser;
 import myjava.StaticLibrary;
 
@@ -27,7 +29,10 @@ public class CONSTANT_Class extends ConstantPoolElem {
 
     @Override
     public Object GetValue() {
-        Class c = StaticLibrary.LoadClass(pool[nameIndex - 1].toString());
-        return c;
+        InbuiltObject ibo=InbuiltObject.prepare(pool[nameIndex - 1].toString());
+        if(ibo!=null){
+            return ibo;
+        }
+        return new Instance(this);
     }
 }

@@ -8,6 +8,7 @@ import Attributes.LocalVariableTableAttribute;
 import ConstantPoolTypes.ConstantPoolElem;
 import java.util.Queue;
 import java.util.Stack;
+import myjava.Convertor;
 import myjava.StaticLibrary;
 
 /**
@@ -24,9 +25,9 @@ byte cnst;
     }
     @Override
     public void ExcecuteInstruction(Stack<Object> VariableStack, ConstantPoolElem[] constantPool, LocalVariableTableAttribute table) {
-      int val = (int)table.getLocalVariableTable()[index].value;
+      int val = Convertor.toInt(table.getLocalVariable(index));
       val += cnst;
-      table.getLocalVariableTable()[index].value = val;
+      table.setLocalVariable(index, val);
     }
     
 }

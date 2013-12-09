@@ -4,10 +4,14 @@
  */
 package Instructions;
 
+import Attributes.CodeAttribute;
 import Attributes.LocalVariableTableAttribute;
+import ConstantPoolTypes.CONSTANT_Fieldref_info;
 import ConstantPoolTypes.CONSTANT_NameAndType_info;
 import ConstantPoolTypes.ConstantPoolElem;
 import Descriptors.FieldDescriptor;
+import Infos.MethodInfo;
+import Parser.Parser;
 import java.io.PrintStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -45,23 +49,7 @@ public class getstatic extends InstructionElem {
 
     @Override
     public void ExcecuteInstruction(Stack<Object> VariableStack, ConstantPoolElem[] constantPool, LocalVariableTableAttribute table) {
-        CONSTANT_NameAndType_info nameandtype = (CONSTANT_NameAndType_info) constantPool[index - 1].GetValue();
-        FieldDescriptor fd = nameandtype.GetFieldDescriptor();
-        Class c = fd.getClazz();
-        String n = fd.getField();
-        Field f = null;
-        try {
-            f = c.getDeclaredField(fd.getField());
-            Object value = f.get(c);
-            VariableStack.push(value);
-        } catch (NoSuchFieldException ex) {
-            Logger.getLogger(getstatic.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SecurityException ex) {
-            Logger.getLogger(getstatic.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalArgumentException ex) {
-            Logger.getLogger(getstatic.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(getstatic.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        CONSTANT_Fieldref_info field = (CONSTANT_Fieldref_info) constantPool[index - 1];
+        VariableStack.push(field.loadValue());
     }
 }

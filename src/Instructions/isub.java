@@ -7,6 +7,7 @@ package Instructions;
 import Attributes.LocalVariableTableAttribute;
 import ConstantPoolTypes.ConstantPoolElem;
 import java.util.Stack;
+import myjava.Convertor;
 
 /**
  *
@@ -21,8 +22,8 @@ public class isub extends InstructionElem {
     @Override
     public void ExcecuteInstruction(Stack<Object> VariableStack, ConstantPoolElem[] constantPool,
     LocalVariableTableAttribute table) {
-        int a = (int)VariableStack.pop();
-        int b = (int)VariableStack.pop();
+        int a = Convertor.toInt(VariableStack.pop());
+        int b = Convertor.toInt(VariableStack.pop());
         VariableStack.push((a-b));
     }
 }

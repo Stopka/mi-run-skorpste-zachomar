@@ -14,7 +14,7 @@ import myjava.StaticLibrary;
  *
  * @author Zachy
  */
-public class ifnull extends InstructionElem implements ControlElem {
+public class ifnull extends ControlElem {
 
     int branch;
     boolean jump = false;
@@ -34,9 +34,13 @@ public class ifnull extends InstructionElem implements ControlElem {
 
     @Override
     public int JumpTo() {
-        if (jump) {
-            return branch;
-        }
-        return -1;
+        return branch;
     }
+
+    @Override
+    public boolean isToJump() {
+        return jump;
+    }
+    
+    
 }

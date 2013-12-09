@@ -23,6 +23,6 @@ public class fstore_ extends InstructionElem {
     public void ExcecuteInstruction(Stack<Object> VariableStack, ConstantPoolElem[] constantPool, LocalVariableTableAttribute table) {
    
         float value = (float) VariableStack.pop();
-        table.getLocalVariableTable()[index].value = value;
+        table.setLocalVariable(index, value);
     }
 }

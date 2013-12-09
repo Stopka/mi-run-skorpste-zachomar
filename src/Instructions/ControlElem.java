@@ -8,6 +8,16 @@ package Instructions;
  *
  * @author Zachy
  */
-public interface ControlElem {
+public abstract class ControlElem extends InstructionElem{
+
+    public ControlElem(int pos) {
+        super(pos);
+    }
     public abstract int JumpTo();
+    
+    public abstract boolean isToJump();
+    
+    public boolean isFinal(){
+        return false;
+    }
 }

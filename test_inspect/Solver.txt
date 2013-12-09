@@ -1,0 +1,397 @@
+Classfile /home/stopka/Veřejné/Programming/java/mi-run-skorpste-zachomar/testdata/Solver.class
+  Last modified 29.11.2013; size 1629 bytes
+  MD5 checksum 124284746d14f6769c197005de34f8b6
+  Compiled from "Solver.java"
+public class run_knapsack.Solver
+  SourceFile: "Solver.java"
+  minor version: 0
+  major version: 51
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+   #1 = Methodref          #16.#52        //  java/lang/Object."<init>":()V
+   #2 = Fieldref           #15.#53        //  run_knapsack/Solver.M:I
+   #3 = Fieldref           #15.#54        //  run_knapsack/Solver.w:[I
+   #4 = Fieldref           #15.#55        //  run_knapsack/Solver.c:[I
+   #5 = Fieldref           #15.#56        //  run_knapsack/Solver.n:I
+   #6 = Fieldref           #15.#57        //  run_knapsack/Solver.conf:[Z
+   #7 = Methodref          #15.#58        //  run_knapsack/Solver.getMaxWeight:()I
+   #8 = Methodref          #15.#59        //  run_knapsack/Solver.getMaxPrice:()I
+   #9 = Methodref          #60.#61        //  "[Z".clone:()Ljava/lang/Object;
+  #10 = Class              #24            //  "[Z"
+  #11 = Methodref          #15.#62        //  run_knapsack/Solver.solve:()V
+  #12 = Methodref          #15.#63        //  run_knapsack/Solver.getMaxConf:()[Z
+  #13 = Methodref          #15.#64        //  run_knapsack/Solver.getConfPrice:([Z)I
+  #14 = Methodref          #15.#65        //  run_knapsack/Solver.getConfWeight:([Z)I
+  #15 = Class              #66            //  run_knapsack/Solver
+  #16 = Class              #67            //  java/lang/Object
+  #17 = Utf8               M
+  #18 = Utf8               I
+  #19 = Utf8               w
+  #20 = Utf8               [I
+  #21 = Utf8               c
+  #22 = Utf8               n
+  #23 = Utf8               conf
+  #24 = Utf8               [Z
+  #25 = Utf8               <init>
+  #26 = Utf8               (I[I[I)V
+  #27 = Utf8               Code
+  #28 = Utf8               LineNumberTable
+  #29 = Utf8               LocalVariableTable
+  #30 = Utf8               this
+  #31 = Utf8               Lrun_knapsack/Solver;
+  #32 = Utf8               solve
+  #33 = Utf8               ()V
+  #34 = Utf8               j
+  #35 = Utf8               price
+  #36 = Utf8               i
+  #37 = Utf8               max_conf
+  #38 = Utf8               max_price
+  #39 = Utf8               StackMapTable
+  #40 = Class              #66            //  run_knapsack/Solver
+  #41 = Utf8               getMaxConf
+  #42 = Utf8               ()[Z
+  #43 = Utf8               getConfPrice
+  #44 = Utf8               ([Z)I
+  #45 = Utf8               result
+  #46 = Utf8               getMaxPrice
+  #47 = Utf8               ()I
+  #48 = Utf8               getMaxWeight
+  #49 = Utf8               getConfWeight
+  #50 = Utf8               SourceFile
+  #51 = Utf8               Solver.java
+  #52 = NameAndType        #25:#33        //  "<init>":()V
+  #53 = NameAndType        #17:#18        //  M:I
+  #54 = NameAndType        #19:#20        //  w:[I
+  #55 = NameAndType        #21:#20        //  c:[I
+  #56 = NameAndType        #22:#18        //  n:I
+  #57 = NameAndType        #23:#24        //  conf:[Z
+  #58 = NameAndType        #48:#47        //  getMaxWeight:()I
+  #59 = NameAndType        #46:#47        //  getMaxPrice:()I
+  #60 = Class              #24            //  "[Z"
+  #61 = NameAndType        #68:#69        //  clone:()Ljava/lang/Object;
+  #62 = NameAndType        #32:#33        //  solve:()V
+  #63 = NameAndType        #41:#42        //  getMaxConf:()[Z
+  #64 = NameAndType        #43:#44        //  getConfPrice:([Z)I
+  #65 = NameAndType        #49:#44        //  getConfWeight:([Z)I
+  #66 = Utf8               run_knapsack/Solver
+  #67 = Utf8               java/lang/Object
+  #68 = Utf8               clone
+  #69 = Utf8               ()Ljava/lang/Object;
+{
+  int M;
+    flags: 
+
+  int[] w;
+    flags: 
+
+  int[] c;
+    flags: 
+
+  int n;
+    flags: 
+
+  boolean[] conf;
+    flags: 
+
+  public run_knapsack.Solver(int, int[], int[]);
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=4, args_size=4
+         0: aload_0       
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: aload_0       
+         5: iload_1       
+         6: putfield      #2                  // Field M:I
+         9: aload_0       
+        10: aload_2       
+        11: putfield      #3                  // Field w:[I
+        14: aload_0       
+        15: aload_3       
+        16: putfield      #4                  // Field c:[I
+        19: aload_0       
+        20: aload_0       
+        21: getfield      #3                  // Field w:[I
+        24: arraylength   
+        25: putfield      #5                  // Field n:I
+        28: return        
+      LineNumberTable:
+        line 20: 0
+        line 21: 4
+        line 22: 9
+        line 23: 14
+        line 24: 19
+        line 25: 28
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0      29     0  this   Lrun_knapsack/Solver;
+               0      29     1     M   I
+               0      29     2     w   [I
+               0      29     3     c   [I
+
+  public void solve();
+    flags: ACC_PUBLIC
+    Code:
+      stack=5, locals=6, args_size=1
+         0: aload_0       
+         1: aload_0       
+         2: getfield      #5                  // Field n:I
+         5: newarray       boolean
+         7: putfield      #6                  // Field conf:[Z
+        10: aconst_null   
+        11: astore_1      
+        12: iconst_0      
+        13: istore_2      
+        14: iconst_0      
+        15: istore        4
+        17: iload         4
+        19: i2l           
+        20: lconst_1      
+        21: aload_0       
+        22: getfield      #5                  // Field n:I
+        25: lshl          
+        26: lcmp          
+        27: ifge          120
+        30: iconst_0      
+        31: istore        5
+        33: iload         5
+        35: aload_0       
+        36: getfield      #5                  // Field n:I
+        39: if_icmpge     80
+        42: aload_0       
+        43: getfield      #6                  // Field conf:[Z
+        46: iload         5
+        48: baload        
+        49: ifeq          63
+        52: aload_0       
+        53: getfield      #6                  // Field conf:[Z
+        56: iload         5
+        58: iconst_0      
+        59: bastore       
+        60: goto          74
+        63: aload_0       
+        64: getfield      #6                  // Field conf:[Z
+        67: iload         5
+        69: iconst_1      
+        70: bastore       
+        71: goto          80
+        74: iinc          5, 1
+        77: goto          33
+        80: aload_0       
+        81: invokevirtual #7                  // Method getMaxWeight:()I
+        84: aload_0       
+        85: getfield      #2                  // Field M:I
+        88: if_icmpgt     114
+        91: aload_0       
+        92: invokevirtual #8                  // Method getMaxPrice:()I
+        95: istore_3      
+        96: iload_3       
+        97: iload_2       
+        98: if_icmplt     114
+       101: iload_3       
+       102: istore_2      
+       103: aload_0       
+       104: getfield      #6                  // Field conf:[Z
+       107: invokevirtual #9                  // Method "[Z".clone:()Ljava/lang/Object;
+       110: checkcast     #10                 // class "[Z"
+       113: astore_1      
+       114: iinc          4, 1
+       117: goto          17
+       120: aload_0       
+       121: aload_1       
+       122: putfield      #6                  // Field conf:[Z
+       125: return        
+      LineNumberTable:
+        line 28: 0
+        line 29: 10
+        line 31: 12
+        line 35: 14
+        line 37: 30
+        line 38: 42
+        line 39: 52
+        line 41: 63
+        line 42: 71
+        line 37: 74
+        line 46: 80
+        line 47: 91
+        line 48: 96
+        line 49: 101
+        line 50: 103
+        line 35: 114
+        line 54: 120
+        line 55: 125
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+              33      47     5     j   I
+              96      18     3 price   I
+              17     103     4     i   I
+               0     126     0  this   Lrun_knapsack/Solver;
+              12     114     1 max_conf   [Z
+              14     112     2 max_price   I
+      StackMapTable: number_of_entries = 7
+           frame_type = 255 /* full_frame */
+          offset_delta = 17
+          locals = [ class run_knapsack/Solver, class "[Z", int, top, int ]
+          stack = []
+           frame_type = 252 /* append */
+             offset_delta = 15
+        locals = [ int ]
+           frame_type = 29 /* same */
+           frame_type = 10 /* same */
+           frame_type = 250 /* chop */
+          offset_delta = 5
+           frame_type = 33 /* same */
+           frame_type = 249 /* chop */
+          offset_delta = 5
+
+
+  public boolean[] getMaxConf();
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0       
+         1: getfield      #6                  // Field conf:[Z
+         4: ifnonnull     11
+         7: aload_0       
+         8: invokevirtual #11                 // Method solve:()V
+        11: aload_0       
+        12: getfield      #6                  // Field conf:[Z
+        15: areturn       
+      LineNumberTable:
+        line 58: 0
+        line 59: 7
+        line 61: 11
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0      16     0  this   Lrun_knapsack/Solver;
+      StackMapTable: number_of_entries = 1
+           frame_type = 11 /* same */
+
+
+  public int getConfPrice(boolean[]);
+    flags: ACC_PUBLIC
+    Code:
+      stack=3, locals=4, args_size=2
+         0: iconst_0      
+         1: istore_2      
+         2: iconst_0      
+         3: istore_3      
+         4: iload_3       
+         5: aload_0       
+         6: getfield      #5                  // Field n:I
+         9: if_icmpge     33
+        12: aload_1       
+        13: iload_3       
+        14: baload        
+        15: ifeq          27
+        18: iload_2       
+        19: aload_0       
+        20: getfield      #4                  // Field c:[I
+        23: iload_3       
+        24: iaload        
+        25: iadd          
+        26: istore_2      
+        27: iinc          3, 1
+        30: goto          4
+        33: iload_2       
+        34: ireturn       
+      LineNumberTable:
+        line 65: 0
+        line 66: 2
+        line 67: 12
+        line 68: 18
+        line 66: 27
+        line 71: 33
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               4      29     3     i   I
+               0      35     0  this   Lrun_knapsack/Solver;
+               0      35     1  conf   [Z
+               2      33     2 result   I
+      StackMapTable: number_of_entries = 3
+           frame_type = 253 /* append */
+             offset_delta = 4
+        locals = [ int, int ]
+           frame_type = 22 /* same */
+           frame_type = 250 /* chop */
+          offset_delta = 5
+
+
+  public int getMaxPrice();
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0       
+         1: aload_0       
+         2: invokevirtual #12                 // Method getMaxConf:()[Z
+         5: invokevirtual #13                 // Method getConfPrice:([Z)I
+         8: ireturn       
+      LineNumberTable:
+        line 75: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0       9     0  this   Lrun_knapsack/Solver;
+
+  public int getMaxWeight();
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0       
+         1: aload_0       
+         2: invokevirtual #12                 // Method getMaxConf:()[Z
+         5: invokevirtual #14                 // Method getConfWeight:([Z)I
+         8: ireturn       
+      LineNumberTable:
+        line 79: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0       9     0  this   Lrun_knapsack/Solver;
+
+  public int getConfWeight(boolean[]);
+    flags: ACC_PUBLIC
+    Code:
+      stack=3, locals=4, args_size=2
+         0: iconst_0      
+         1: istore_2      
+         2: iconst_0      
+         3: istore_3      
+         4: iload_3       
+         5: aload_0       
+         6: getfield      #5                  // Field n:I
+         9: if_icmpge     33
+        12: aload_1       
+        13: iload_3       
+        14: baload        
+        15: ifeq          27
+        18: iload_2       
+        19: aload_0       
+        20: getfield      #3                  // Field w:[I
+        23: iload_3       
+        24: iaload        
+        25: iadd          
+        26: istore_2      
+        27: iinc          3, 1
+        30: goto          4
+        33: iload_2       
+        34: ireturn       
+      LineNumberTable:
+        line 83: 0
+        line 84: 2
+        line 85: 12
+        line 86: 18
+        line 84: 27
+        line 89: 33
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               4      29     3     i   I
+               0      35     0  this   Lrun_knapsack/Solver;
+               0      35     1  conf   [Z
+               2      33     2 result   I
+      StackMapTable: number_of_entries = 3
+           frame_type = 253 /* append */
+             offset_delta = 4
+        locals = [ int, int ]
+           frame_type = 22 /* same */
+           frame_type = 250 /* chop */
+          offset_delta = 5
+
+}

@@ -7,6 +7,7 @@ package Instructions;
 import Attributes.LocalVariableTableAttribute;
 import ConstantPoolTypes.ConstantPoolElem;
 import java.util.Stack;
+import myjava.Convertor;
 
 /**
  *
@@ -21,8 +22,8 @@ class iastore extends InstructionElem {
     @Override
     public void ExcecuteInstruction(Stack<Object> VariableStack, ConstantPoolElem[] constantPool, LocalVariableTableAttribute table) {
         
-        int value = (int) VariableStack.pop();
-        int index = (int) VariableStack.pop();
+        int value = Convertor.toInt(VariableStack.pop());
+        int index = Convertor.toInt(VariableStack.pop());
         int[] array = (int[]) VariableStack.pop();
         array[index] = value;
     }
