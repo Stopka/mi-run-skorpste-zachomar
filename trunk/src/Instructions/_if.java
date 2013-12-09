@@ -8,13 +8,14 @@ import Attributes.LocalVariableTableAttribute;
 import ConstantPoolTypes.ConstantPoolElem;
 import java.util.Queue;
 import java.util.Stack;
+import myjava.Convertor;
 import myjava.StaticLibrary;
 
 /**
  *
  * @author Zachy
  */
-public class _if extends InstructionElem implements ControlElem {
+public class _if extends ControlElem {
 
     int branch;
     int condition;
@@ -28,16 +29,13 @@ public class _if extends InstructionElem implements ControlElem {
 
     @Override
     public void ExcecuteInstruction(Stack<Object> VariableStack, ConstantPoolElem[] constantPool, LocalVariableTableAttribute table) {
-        int val = (int) VariableStack.pop();
+        int val = Convertor.toInt(VariableStack.pop());
         jump = CompareVal(val);
     }
 
     @Override
     public int JumpTo() {
-        if (jump) {
-            return branch;
-        }
-        return -1;
+        return branch;
     }
 
     private boolean CompareVal(int val) {
@@ -50,11 +48,16 @@ public class _if extends InstructionElem implements ControlElem {
                 return val < 0;
             case 0x9c: //le
                 return val <= 0;
-            case 0x9d:
+            case 0x9d: //gt
                 return val > 0;
-            case 0x9e:
+            case 0x9e: //ge
                 return val >= 0;
         }
         return false;
+    }
+
+    @Override
+    public boolean isToJump() {
+        return this.jump;
     }
 }

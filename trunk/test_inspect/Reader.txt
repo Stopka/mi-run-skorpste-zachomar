@@ -1,0 +1,304 @@
+Classfile /home/stopka/Veřejné/Programming/java/mi-run-skorpste-zachomar/testdata/Reader.class
+  Last modified 29.11.2013; size 1574 bytes
+  MD5 checksum ea8d0a739c142a4e276ddfd9ad55eaa4
+  Compiled from "Reader.java"
+public class run_knapsack.Reader
+  SourceFile: "Reader.java"
+  minor version: 0
+  major version: 51
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+   #1 = Methodref          #18.#58        //  java/lang/Object."<init>":()V
+   #2 = Class              #59            //  java/io/FileInputStream
+   #3 = Methodref          #2.#60         //  java/io/FileInputStream."<init>":(Ljava/lang/String;)V
+   #4 = Fieldref           #17.#61        //  run_knapsack/Reader.fileInput:Ljava/io/FileInputStream;
+   #5 = Class              #62            //  java/io/FileNotFoundException
+   #6 = String             #63            //  
+   #7 = Methodref          #2.#64         //  java/io/FileInputStream.read:()I
+   #8 = Methodref          #17.#65        //  run_knapsack/Reader.isInt:(I)Z
+   #9 = Class              #66            //  java/lang/StringBuilder
+  #10 = Methodref          #9.#58         //  java/lang/StringBuilder."<init>":()V
+  #11 = Methodref          #9.#67         //  java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+  #12 = Methodref          #9.#68         //  java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
+  #13 = Methodref          #9.#69         //  java/lang/StringBuilder.toString:()Ljava/lang/String;
+  #14 = Class              #70            //  java/io/IOException
+  #15 = Methodref          #71.#72        //  java/lang/Integer.parseInt:(Ljava/lang/String;)I
+  #16 = Fieldref           #17.#73        //  run_knapsack/Reader.ints:[C
+  #17 = Class              #74            //  run_knapsack/Reader
+  #18 = Class              #75            //  java/lang/Object
+  #19 = Utf8               fileInput
+  #20 = Utf8               Ljava/io/FileInputStream;
+  #21 = Utf8               ints
+  #22 = Utf8               [C
+  #23 = Utf8               <init>
+  #24 = Utf8               (Ljava/lang/String;)V
+  #25 = Utf8               Code
+  #26 = Utf8               LineNumberTable
+  #27 = Utf8               LocalVariableTable
+  #28 = Utf8               ex
+  #29 = Utf8               Ljava/io/FileNotFoundException;
+  #30 = Utf8               this
+  #31 = Utf8               Lrun_knapsack/Reader;
+  #32 = Utf8               file_name
+  #33 = Utf8               Ljava/lang/String;
+  #34 = Utf8               StackMapTable
+  #35 = Class              #74            //  run_knapsack/Reader
+  #36 = Class              #76            //  java/lang/String
+  #37 = Class              #62            //  java/io/FileNotFoundException
+  #38 = Utf8               readInt
+  #39 = Utf8               ()I
+  #40 = Utf8               ch
+  #41 = Utf8               I
+  #42 = Utf8               e
+  #43 = Utf8               Ljava/io/IOException;
+  #44 = Utf8               result
+  #45 = Class              #70            //  java/io/IOException
+  #46 = Utf8               isInt
+  #47 = Utf8               (I)Z
+  #48 = Utf8               i
+  #49 = Utf8               C
+  #50 = Utf8               arr$
+  #51 = Utf8               len$
+  #52 = Utf8               i$
+  #53 = Class              #22            //  "[C"
+  #54 = Utf8               <clinit>
+  #55 = Utf8               ()V
+  #56 = Utf8               SourceFile
+  #57 = Utf8               Reader.java
+  #58 = NameAndType        #23:#55        //  "<init>":()V
+  #59 = Utf8               java/io/FileInputStream
+  #60 = NameAndType        #23:#24        //  "<init>":(Ljava/lang/String;)V
+  #61 = NameAndType        #19:#20        //  fileInput:Ljava/io/FileInputStream;
+  #62 = Utf8               java/io/FileNotFoundException
+  #63 = Utf8               
+  #64 = NameAndType        #77:#39        //  read:()I
+  #65 = NameAndType        #46:#47        //  isInt:(I)Z
+  #66 = Utf8               java/lang/StringBuilder
+  #67 = NameAndType        #78:#79        //  append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+  #68 = NameAndType        #78:#80        //  append:(C)Ljava/lang/StringBuilder;
+  #69 = NameAndType        #81:#82        //  toString:()Ljava/lang/String;
+  #70 = Utf8               java/io/IOException
+  #71 = Class              #83            //  java/lang/Integer
+  #72 = NameAndType        #84:#85        //  parseInt:(Ljava/lang/String;)I
+  #73 = NameAndType        #21:#22        //  ints:[C
+  #74 = Utf8               run_knapsack/Reader
+  #75 = Utf8               java/lang/Object
+  #76 = Utf8               java/lang/String
+  #77 = Utf8               read
+  #78 = Utf8               append
+  #79 = Utf8               (Ljava/lang/String;)Ljava/lang/StringBuilder;
+  #80 = Utf8               (C)Ljava/lang/StringBuilder;
+  #81 = Utf8               toString
+  #82 = Utf8               ()Ljava/lang/String;
+  #83 = Utf8               java/lang/Integer
+  #84 = Utf8               parseInt
+  #85 = Utf8               (Ljava/lang/String;)I
+{
+  java.io.FileInputStream fileInput;
+    flags: 
+
+  static final char[] ints;
+    flags: ACC_STATIC, ACC_FINAL
+
+  public run_knapsack.Reader(java.lang.String);
+    flags: ACC_PUBLIC
+    Code:
+      stack=4, locals=3, args_size=2
+         0: aload_0       
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: aload_0       
+         5: new           #2                  // class java/io/FileInputStream
+         8: dup           
+         9: aload_1       
+        10: invokespecial #3                  // Method java/io/FileInputStream."<init>":(Ljava/lang/String;)V
+        13: putfield      #4                  // Field fileInput:Ljava/io/FileInputStream;
+        16: goto          20
+        19: astore_2      
+        20: return        
+      Exception table:
+         from    to  target type
+             4    16    19   Class java/io/FileNotFoundException
+      LineNumberTable:
+        line 20: 0
+        line 22: 4
+        line 25: 16
+        line 23: 19
+        line 26: 20
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+              20       0     2    ex   Ljava/io/FileNotFoundException;
+               0      21     0  this   Lrun_knapsack/Reader;
+               0      21     1 file_name   Ljava/lang/String;
+      StackMapTable: number_of_entries = 2
+           frame_type = 255 /* full_frame */
+          offset_delta = 19
+          locals = [ class run_knapsack/Reader, class java/lang/String ]
+          stack = [ class java/io/FileNotFoundException ]
+           frame_type = 0 /* same */
+
+
+  public int readInt();
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=3, args_size=1
+         0: ldc           #6                  // String 
+         2: astore_1      
+         3: aload_0       
+         4: getfield      #4                  // Field fileInput:Ljava/io/FileInputStream;
+         7: invokevirtual #7                  // Method java/io/FileInputStream.read:()I
+        10: istore_2      
+        11: aload_0       
+        12: iload_2       
+        13: invokespecial #8                  // Method isInt:(I)Z
+        16: ifeq          50
+        19: new           #9                  // class java/lang/StringBuilder
+        22: dup           
+        23: invokespecial #10                 // Method java/lang/StringBuilder."<init>":()V
+        26: aload_1       
+        27: invokevirtual #11                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        30: iload_2       
+        31: i2c           
+        32: invokevirtual #12                 // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
+        35: invokevirtual #13                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+        38: astore_1      
+        39: aload_0       
+        40: getfield      #4                  // Field fileInput:Ljava/io/FileInputStream;
+        43: invokevirtual #7                  // Method java/io/FileInputStream.read:()I
+        46: istore_2      
+        47: goto          11
+        50: goto          54
+        53: astore_2      
+        54: aload_1       
+        55: invokestatic  #15                 // Method java/lang/Integer.parseInt:(Ljava/lang/String;)I
+        58: ireturn       
+      Exception table:
+         from    to  target type
+             3    50    53   Class java/io/IOException
+      LineNumberTable:
+        line 29: 0
+        line 31: 3
+        line 32: 11
+        line 33: 19
+        line 34: 39
+        line 37: 50
+        line 36: 53
+        line 38: 54
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+              11      39     2    ch   I
+              54       0     2     e   Ljava/io/IOException;
+               0      59     0  this   Lrun_knapsack/Reader;
+               3      56     1 result   Ljava/lang/String;
+      StackMapTable: number_of_entries = 4
+           frame_type = 253 /* append */
+             offset_delta = 11
+        locals = [ class java/lang/String, int ]
+           frame_type = 250 /* chop */
+          offset_delta = 38
+           frame_type = 66 /* same_locals_1_stack_item */
+          stack = [ class java/io/IOException ]
+           frame_type = 0 /* same */
+
+
+  private boolean isInt(int);
+    flags: ACC_PRIVATE
+    Code:
+      stack=2, locals=6, args_size=2
+         0: getstatic     #16                 // Field ints:[C
+         3: astore_2      
+         4: aload_2       
+         5: arraylength   
+         6: istore_3      
+         7: iconst_0      
+         8: istore        4
+        10: iload         4
+        12: iload_3       
+        13: if_icmpge     37
+        16: aload_2       
+        17: iload         4
+        19: caload        
+        20: istore        5
+        22: iload         5
+        24: iload_1       
+        25: i2c           
+        26: if_icmpne     31
+        29: iconst_1      
+        30: ireturn       
+        31: iinc          4, 1
+        34: goto          10
+        37: iconst_0      
+        38: ireturn       
+      LineNumberTable:
+        line 42: 0
+        line 43: 22
+        line 44: 29
+        line 42: 31
+        line 47: 37
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+              22       9     5     i   C
+               4      33     2  arr$   [C
+               7      30     3  len$   I
+              10      27     4    i$   I
+               0      39     0  this   Lrun_knapsack/Reader;
+               0      39     1    ch   I
+      StackMapTable: number_of_entries = 3
+           frame_type = 254 /* append */
+             offset_delta = 10
+        locals = [ class "[C", int, int ]
+           frame_type = 20 /* same */
+           frame_type = 248 /* chop */
+          offset_delta = 5
+
+
+  static {};
+    flags: ACC_STATIC
+    Code:
+      stack=4, locals=0, args_size=0
+         0: bipush        10
+         2: newarray       char
+         4: dup           
+         5: iconst_0      
+         6: bipush        48
+         8: castore       
+         9: dup           
+        10: iconst_1      
+        11: bipush        49
+        13: castore       
+        14: dup           
+        15: iconst_2      
+        16: bipush        50
+        18: castore       
+        19: dup           
+        20: iconst_3      
+        21: bipush        51
+        23: castore       
+        24: dup           
+        25: iconst_4      
+        26: bipush        52
+        28: castore       
+        29: dup           
+        30: iconst_5      
+        31: bipush        53
+        33: castore       
+        34: dup           
+        35: bipush        6
+        37: bipush        54
+        39: castore       
+        40: dup           
+        41: bipush        7
+        43: bipush        55
+        45: castore       
+        46: dup           
+        47: bipush        8
+        49: bipush        56
+        51: castore       
+        52: dup           
+        53: bipush        9
+        55: bipush        57
+        57: castore       
+        58: putstatic     #16                 // Field ints:[C
+        61: return        
+      LineNumberTable:
+        line 18: 0
+}

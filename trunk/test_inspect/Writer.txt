@@ -1,0 +1,176 @@
+Classfile /home/stopka/Veřejné/Programming/java/mi-run-skorpste-zachomar/testdata/Writer.class
+  Last modified 29.11.2013; size 1099 bytes
+  MD5 checksum ddab2d89c13751d432b20b9645b34506
+  Compiled from "Writer.java"
+public class run_knapsack.Writer
+  SourceFile: "Writer.java"
+  minor version: 0
+  major version: 51
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+   #1 = Methodref          #12.#42        //  java/lang/Object."<init>":()V
+   #2 = Class              #43            //  java/io/FileOutputStream
+   #3 = Methodref          #2.#44         //  java/io/FileOutputStream."<init>":(Ljava/lang/String;)V
+   #4 = Fieldref           #11.#45        //  run_knapsack/Writer.fileOutput:Ljava/io/FileOutputStream;
+   #5 = Class              #46            //  java/io/FileNotFoundException
+   #6 = Methodref          #47.#48        //  java/lang/String.valueOf:(I)Ljava/lang/String;
+   #7 = Methodref          #47.#49        //  java/lang/String.getBytes:()[B
+   #8 = Methodref          #2.#50         //  java/io/FileOutputStream.write:([B)V
+   #9 = Class              #51            //  java/io/IOException
+  #10 = Methodref          #2.#52         //  java/io/FileOutputStream.write:(I)V
+  #11 = Class              #53            //  run_knapsack/Writer
+  #12 = Class              #54            //  java/lang/Object
+  #13 = Utf8               fileOutput
+  #14 = Utf8               Ljava/io/FileOutputStream;
+  #15 = Utf8               <init>
+  #16 = Utf8               (Ljava/lang/String;)V
+  #17 = Utf8               Code
+  #18 = Utf8               LineNumberTable
+  #19 = Utf8               LocalVariableTable
+  #20 = Utf8               ex
+  #21 = Utf8               Ljava/io/FileNotFoundException;
+  #22 = Utf8               this
+  #23 = Utf8               Lrun_knapsack/Writer;
+  #24 = Utf8               file_name
+  #25 = Utf8               Ljava/lang/String;
+  #26 = Utf8               StackMapTable
+  #27 = Class              #53            //  run_knapsack/Writer
+  #28 = Class              #55            //  java/lang/String
+  #29 = Class              #46            //  java/io/FileNotFoundException
+  #30 = Utf8               writeInt
+  #31 = Utf8               (I)V
+  #32 = Utf8               Ljava/io/IOException;
+  #33 = Utf8               num
+  #34 = Utf8               I
+  #35 = Class              #51            //  java/io/IOException
+  #36 = Utf8               writeChar
+  #37 = Utf8               (C)V
+  #38 = Utf8               ch
+  #39 = Utf8               C
+  #40 = Utf8               SourceFile
+  #41 = Utf8               Writer.java
+  #42 = NameAndType        #15:#56        //  "<init>":()V
+  #43 = Utf8               java/io/FileOutputStream
+  #44 = NameAndType        #15:#16        //  "<init>":(Ljava/lang/String;)V
+  #45 = NameAndType        #13:#14        //  fileOutput:Ljava/io/FileOutputStream;
+  #46 = Utf8               java/io/FileNotFoundException
+  #47 = Class              #55            //  java/lang/String
+  #48 = NameAndType        #57:#58        //  valueOf:(I)Ljava/lang/String;
+  #49 = NameAndType        #59:#60        //  getBytes:()[B
+  #50 = NameAndType        #61:#62        //  write:([B)V
+  #51 = Utf8               java/io/IOException
+  #52 = NameAndType        #61:#31        //  write:(I)V
+  #53 = Utf8               run_knapsack/Writer
+  #54 = Utf8               java/lang/Object
+  #55 = Utf8               java/lang/String
+  #56 = Utf8               ()V
+  #57 = Utf8               valueOf
+  #58 = Utf8               (I)Ljava/lang/String;
+  #59 = Utf8               getBytes
+  #60 = Utf8               ()[B
+  #61 = Utf8               write
+  #62 = Utf8               ([B)V
+{
+  java.io.FileOutputStream fileOutput;
+    flags: 
+
+  public run_knapsack.Writer(java.lang.String);
+    flags: ACC_PUBLIC
+    Code:
+      stack=4, locals=3, args_size=2
+         0: aload_0       
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: aload_0       
+         5: new           #2                  // class java/io/FileOutputStream
+         8: dup           
+         9: aload_1       
+        10: invokespecial #3                  // Method java/io/FileOutputStream."<init>":(Ljava/lang/String;)V
+        13: putfield      #4                  // Field fileOutput:Ljava/io/FileOutputStream;
+        16: goto          20
+        19: astore_2      
+        20: return        
+      Exception table:
+         from    to  target type
+             4    16    19   Class java/io/FileNotFoundException
+      LineNumberTable:
+        line 23: 0
+        line 25: 4
+        line 28: 16
+        line 26: 19
+        line 29: 20
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+              20       0     2    ex   Ljava/io/FileNotFoundException;
+               0      21     0  this   Lrun_knapsack/Writer;
+               0      21     1 file_name   Ljava/lang/String;
+      StackMapTable: number_of_entries = 2
+           frame_type = 255 /* full_frame */
+          offset_delta = 19
+          locals = [ class run_knapsack/Writer, class java/lang/String ]
+          stack = [ class java/io/FileNotFoundException ]
+           frame_type = 0 /* same */
+
+
+  public void writeInt(int);
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=3, args_size=2
+         0: aload_0       
+         1: getfield      #4                  // Field fileOutput:Ljava/io/FileOutputStream;
+         4: iload_1       
+         5: invokestatic  #6                  // Method java/lang/String.valueOf:(I)Ljava/lang/String;
+         8: invokevirtual #7                  // Method java/lang/String.getBytes:()[B
+        11: invokevirtual #8                  // Method java/io/FileOutputStream.write:([B)V
+        14: goto          18
+        17: astore_2      
+        18: return        
+      Exception table:
+         from    to  target type
+             0    14    17   Class java/io/IOException
+      LineNumberTable:
+        line 33: 0
+        line 36: 14
+        line 34: 17
+        line 37: 18
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+              18       0     2    ex   Ljava/io/IOException;
+               0      19     0  this   Lrun_knapsack/Writer;
+               0      19     1   num   I
+      StackMapTable: number_of_entries = 2
+           frame_type = 81 /* same_locals_1_stack_item */
+          stack = [ class java/io/IOException ]
+           frame_type = 0 /* same */
+
+
+  public void writeChar(char);
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=3, args_size=2
+         0: aload_0       
+         1: getfield      #4                  // Field fileOutput:Ljava/io/FileOutputStream;
+         4: iload_1       
+         5: i2b           
+         6: invokevirtual #10                 // Method java/io/FileOutputStream.write:(I)V
+         9: goto          13
+        12: astore_2      
+        13: return        
+      Exception table:
+         from    to  target type
+             0     9    12   Class java/io/IOException
+      LineNumberTable:
+        line 41: 0
+        line 43: 9
+        line 42: 12
+        line 44: 13
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+              13       0     2    ex   Ljava/io/IOException;
+               0      14     0  this   Lrun_knapsack/Writer;
+               0      14     1    ch   C
+      StackMapTable: number_of_entries = 2
+           frame_type = 76 /* same_locals_1_stack_item */
+          stack = [ class java/io/IOException ]
+           frame_type = 0 /* same */
+
+}

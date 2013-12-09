@@ -13,7 +13,7 @@ import java.util.Stack;
  * @author Zachy
  * Return void from method
  */
-public class _return extends InstructionElem{
+public class _return extends ControlElem {
     public _return(int pos){
         super(pos);
     }
@@ -23,4 +23,21 @@ public class _return extends InstructionElem{
     LocalVariableTableAttribute table) {
         
     }
+
+    @Override
+    public int JumpTo() {
+        return -1;
+    }
+
+    @Override
+    public boolean isToJump() {
+        return true;
+    }
+
+    @Override
+    public boolean isFinal() {
+        return true;
+    }
+    
+    
 }

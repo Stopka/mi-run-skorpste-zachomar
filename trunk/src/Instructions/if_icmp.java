@@ -8,13 +8,14 @@ import Attributes.LocalVariableTableAttribute;
 import ConstantPoolTypes.ConstantPoolElem;
 import java.util.Queue;
 import java.util.Stack;
+import myjava.Convertor;
 import myjava.StaticLibrary;
 
 /**
  *
  * @author Zachy
  */
-public class if_icmp extends InstructionElem implements ControlElem {
+public class if_icmp extends ControlElem {
 
     int condition;
     int branch;
@@ -29,8 +30,8 @@ public class if_icmp extends InstructionElem implements ControlElem {
     @Override
     public void ExcecuteInstruction(Stack<Object> VariableStack, ConstantPoolElem[] constantPool, LocalVariableTableAttribute table) {
 
-        int value2 = (int) VariableStack.pop();
-        int value1 = (int) VariableStack.pop();
+        int value2 = Convertor.toInt(VariableStack.pop());
+        int value1 = Convertor.toInt(VariableStack.pop());
         jump = CompareVals(value1, value2);
     }
 
@@ -40,12 +41,12 @@ public class if_icmp extends InstructionElem implements ControlElem {
                 return value1 == value2;
             case 0xa0: //ne
                 return value1 != value2;
-            case 0xa1: //gt
-                return value1 > value2;
+            case 0xa1: //lt
+                return value1 < value2;
             case 0xa2: //ge
                 return value1 >= value2;
-            case 0xa3: //lt
-                return value1 < value2;
+            case 0xa3: //gt
+                return value1 > value2;
             case 0xa4: //le
                 return value1 <= value2;
         }
@@ -54,9 +55,11 @@ public class if_icmp extends InstructionElem implements ControlElem {
 
     @Override
     public int JumpTo() {
-        if (jump) {
-            return branch;
-        }
-        return -1;
+        return branch;
+    }
+
+    @Override
+    public boolean isToJump() {
+        return jump;
     }
 }

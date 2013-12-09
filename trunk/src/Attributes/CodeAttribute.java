@@ -9,6 +9,11 @@ import ConstantPoolTypes.ConstantPoolElem;
 import Instructions.ControlElem;
 import Instructions.InstructionElem;
 import Instructions.InstructionGenerator;
+import Instructions.baload;
+import Instructions.invokestatic;
+import Instructions.ireturn;
+import Instructions.istore_;
+import Instructions.putfield;
 import Parser.Parser;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -133,11 +138,14 @@ public class CodeAttribute extends AttributeInfo {
     }
 
     public void AssignLocalVariables(Stack<Object> stack, Class[] classes) {
-        LocalVariable[] var = localVariableTable.getLocalVariableTable();
-        for (int j = 0; j < classes.length; j++) {
-            localVariableTable.getLocalVariableTable()[j + 1].value = stack.pop();
+        for (int j = classes.length; j >=0; j--) {
+            for(LocalVariable var: localVariableTable.getLocalVariableTable()){
+                if(var.index==j){
+                    var.value=stack.pop();
+                    break;
+                }
+            }
         }
-        localVariableTable.getLocalVariableTable()[0].value = stack.pop();//snad staci takhle
     }
 
     public void InitVariableStack(Stack<Object> stack) {
@@ -146,13 +154,19 @@ public class CodeAttribute extends AttributeInfo {
 
     public void ExecuteCode() {
         for (int i = 0; i < instructions.length; i++) {
-         //   System.out.println(instructions[i]);
+            if(instructions[i] instanceof baload && localVariableStack.get(localVariableStack.size()-2)==null ){
+                int dbg=0;
+            }
                  instructions[i].ExcecuteInstruction(localVariableStack, pool, localVariableTable);
             if (instructions[i] instanceof ControlElem) {
                 ControlElem control = (ControlElem) instructions[i];
-                int offset = control.JumpTo();
-                if (offset != -1) {
-                    i = FindInstructionIndex(instructions[i].getPosition() + offset) - 1;
+                if (control.isToJump()) {
+                    if(control.isFinal()){
+                        i=instructions.length;
+                    }else{
+                        int offset = control.JumpTo();
+                        i = FindInstructionIndex(instructions[i].getPosition() + offset) - 1;
+                    }
                 }
             }
         }

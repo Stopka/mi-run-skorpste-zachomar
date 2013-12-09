@@ -8,6 +8,7 @@ import Attributes.LocalVariableTableAttribute;
 import Attributes.LocalVariableTableAttribute.LocalVariable;
 import ConstantPoolTypes.ConstantPoolElem;
 import java.util.Stack;
+import myjava.Convertor;
 
 /**
  *
@@ -30,7 +31,7 @@ public class istore_ extends InstructionElem {
     @Override
     public void ExcecuteInstruction(Stack<Object> VariableStack, ConstantPoolElem[] constantPool,
             LocalVariableTableAttribute table) {
-        int value = (int) VariableStack.pop();
-        table.getLocalVariableTable()[index].value = value;
+        int value = Convertor.toInt(VariableStack.pop());
+        table.setLocalVariable(index, value);
     }
 }

@@ -13,7 +13,7 @@ import java.util.Stack;
  *
  * @author Zachy
  */
-public class areturn extends InstructionElem implements ControlElem {
+public class areturn extends _return {
 
     Object retVal;
     CodeAttribute parent;
@@ -27,10 +27,5 @@ public class areturn extends InstructionElem implements ControlElem {
     public void ExcecuteInstruction(Stack<Object> VariableStack, ConstantPoolElem[] constantPool, LocalVariableTableAttribute table) {
         retVal = VariableStack.pop();
         parent.setReturnValue(retVal);
-    }
-
-    @Override
-    public int JumpTo() {
-        return -1;
     }
 }

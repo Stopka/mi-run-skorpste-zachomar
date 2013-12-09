@@ -29,7 +29,7 @@ public class AttributeInfoUndefined extends AttributeInfo {
     }
 
     public void Print() {
-        System.out.println(new String(info));
+        System.out.println("AttIfoUndefined: "+new String(info));
     }
 
     public int getAttributeNameIndex() {

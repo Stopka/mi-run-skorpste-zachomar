@@ -23,6 +23,6 @@ public class dload_ extends InstructionElem {
 
     @Override
     public void ExcecuteInstruction(Stack<Object> VariableStack, ConstantPoolElem[] constantPool, LocalVariableTableAttribute table) {
-        VariableStack.push(constantPool[index - 1]);
+        VariableStack.push(table.getLocalVariable(index));
     }
 }

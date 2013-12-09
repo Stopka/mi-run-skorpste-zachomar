@@ -6,6 +6,7 @@ package Instructions;
 
 import Attributes.LocalVariableTableAttribute;
 import ConstantPoolTypes.ConstantPoolElem;
+import Heap.Heap;
 import java.util.Queue;
 import java.util.Stack;
 import java.util.logging.Level;
@@ -30,9 +31,11 @@ public class _new extends InstructionElem {
         try {
             ConstantPoolElem e = constantPool[index -1];
             Object o = e.GetValue();
-            VariableStack.push(e.GetValue());
+            Heap h=Heap.getHeap();
+            VariableStack.push(h.store(o));
         } catch (Exception e) {
-            System.out.println("ERR");
+            System.err.println("Instruction _new ERR: ");
+            e.printStackTrace();
         }
     }
 }

@@ -1,0 +1,299 @@
+Classfile /home/stopka/Veřejné/Programming/java/mi-run-skorpste-zachomar/testdata/RUN_KnapSack.class
+  Last modified 29.11.2013; size 1556 bytes
+  MD5 checksum 308e960cf9fd93656bc2f527acd71f65
+  Compiled from "RUN_KnapSack.java"
+public class run_knapsack.RUN_KnapSack
+  SourceFile: "RUN_KnapSack.java"
+  minor version: 0
+  major version: 51
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+   #1 = Methodref          #17.#60        //  java/lang/Object."<init>":()V
+   #2 = Class              #61            //  run_knapsack/Reader
+   #3 = String             #62            //  file_in.txt
+   #4 = Methodref          #2.#63         //  run_knapsack/Reader."<init>":(Ljava/lang/String;)V
+   #5 = Methodref          #2.#64         //  run_knapsack/Reader.readInt:()I
+   #6 = Class              #65            //  run_knapsack/Solver
+   #7 = Methodref          #6.#66         //  run_knapsack/Solver."<init>":(I[I[I)V
+   #8 = Methodref          #6.#67         //  run_knapsack/Solver.getMaxConf:()[Z
+   #9 = Methodref          #6.#68         //  run_knapsack/Solver.getMaxPrice:()I
+  #10 = Methodref          #6.#69         //  run_knapsack/Solver.getMaxWeight:()I
+  #11 = Class              #70            //  run_knapsack/Writer
+  #12 = String             #71            //  file_out.txt
+  #13 = Methodref          #11.#63        //  run_knapsack/Writer."<init>":(Ljava/lang/String;)V
+  #14 = Methodref          #11.#72        //  run_knapsack/Writer.writeInt:(I)V
+  #15 = Methodref          #11.#73        //  run_knapsack/Writer.writeChar:(C)V
+  #16 = Class              #74            //  run_knapsack/RUN_KnapSack
+  #17 = Class              #75            //  java/lang/Object
+  #18 = Utf8               <init>
+  #19 = Utf8               ()V
+  #20 = Utf8               Code
+  #21 = Utf8               LineNumberTable
+  #22 = Utf8               LocalVariableTable
+  #23 = Utf8               this
+  #24 = Utf8               Lrun_knapsack/RUN_KnapSack;
+  #25 = Utf8               main
+  #26 = Utf8               ([Ljava/lang/String;)V
+  #27 = Utf8               i
+  #28 = Utf8               I
+  #29 = Utf8               bit
+  #30 = Utf8               Z
+  #31 = Utf8               arr$
+  #32 = Utf8               [Z
+  #33 = Utf8               len$
+  #34 = Utf8               i$
+  #35 = Utf8               args
+  #36 = Utf8               [Ljava/lang/String;
+  #37 = Utf8               in
+  #38 = Utf8               Lrun_knapsack/Reader;
+  #39 = Utf8               M
+  #40 = Utf8               n
+  #41 = Utf8               w
+  #42 = Utf8               [I
+  #43 = Utf8               c
+  #44 = Utf8               s
+  #45 = Utf8               Lrun_knapsack/Solver;
+  #46 = Utf8               conf
+  #47 = Utf8               price
+  #48 = Utf8               weight
+  #49 = Utf8               out
+  #50 = Utf8               Lrun_knapsack/Writer;
+  #51 = Utf8               StackMapTable
+  #52 = Class              #36            //  "[Ljava/lang/String;"
+  #53 = Class              #61            //  run_knapsack/Reader
+  #54 = Class              #42            //  "[I"
+  #55 = Class              #65            //  run_knapsack/Solver
+  #56 = Class              #32            //  "[Z"
+  #57 = Class              #70            //  run_knapsack/Writer
+  #58 = Utf8               SourceFile
+  #59 = Utf8               RUN_KnapSack.java
+  #60 = NameAndType        #18:#19        //  "<init>":()V
+  #61 = Utf8               run_knapsack/Reader
+  #62 = Utf8               file_in.txt
+  #63 = NameAndType        #18:#76        //  "<init>":(Ljava/lang/String;)V
+  #64 = NameAndType        #77:#78        //  readInt:()I
+  #65 = Utf8               run_knapsack/Solver
+  #66 = NameAndType        #18:#79        //  "<init>":(I[I[I)V
+  #67 = NameAndType        #80:#81        //  getMaxConf:()[Z
+  #68 = NameAndType        #82:#78        //  getMaxPrice:()I
+  #69 = NameAndType        #83:#78        //  getMaxWeight:()I
+  #70 = Utf8               run_knapsack/Writer
+  #71 = Utf8               file_out.txt
+  #72 = NameAndType        #84:#85        //  writeInt:(I)V
+  #73 = NameAndType        #86:#87        //  writeChar:(C)V
+  #74 = Utf8               run_knapsack/RUN_KnapSack
+  #75 = Utf8               java/lang/Object
+  #76 = Utf8               (Ljava/lang/String;)V
+  #77 = Utf8               readInt
+  #78 = Utf8               ()I
+  #79 = Utf8               (I[I[I)V
+  #80 = Utf8               getMaxConf
+  #81 = Utf8               ()[Z
+  #82 = Utf8               getMaxPrice
+  #83 = Utf8               getMaxWeight
+  #84 = Utf8               writeInt
+  #85 = Utf8               (I)V
+  #86 = Utf8               writeChar
+  #87 = Utf8               (C)V
+{
+  public run_knapsack.RUN_KnapSack();
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0       
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return        
+      LineNumberTable:
+        line 13: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0       5     0  this   Lrun_knapsack/RUN_KnapSack;
+
+  public static void main(java.lang.String[]);
+    flags: ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=5, locals=15, args_size=1
+         0: new           #2                  // class run_knapsack/Reader
+         3: dup           
+         4: ldc           #3                  // String file_in.txt
+         6: invokespecial #4                  // Method run_knapsack/Reader."<init>":(Ljava/lang/String;)V
+         9: astore_1      
+        10: aload_1       
+        11: invokevirtual #5                  // Method run_knapsack/Reader.readInt:()I
+        14: istore_2      
+        15: aload_1       
+        16: invokevirtual #5                  // Method run_knapsack/Reader.readInt:()I
+        19: istore_3      
+        20: iload_3       
+        21: newarray       int
+        23: astore        4
+        25: iload_3       
+        26: newarray       int
+        28: astore        5
+        30: iconst_0      
+        31: istore        6
+        33: iload         6
+        35: iload_3       
+        36: if_icmpge     54
+        39: aload         4
+        41: iload         6
+        43: aload_1       
+        44: invokevirtual #5                  // Method run_knapsack/Reader.readInt:()I
+        47: iastore       
+        48: iinc          6, 1
+        51: goto          33
+        54: iconst_0      
+        55: istore        6
+        57: iload         6
+        59: iload_3       
+        60: if_icmpge     78
+        63: aload         5
+        65: iload         6
+        67: aload_1       
+        68: invokevirtual #5                  // Method run_knapsack/Reader.readInt:()I
+        71: iastore       
+        72: iinc          6, 1
+        75: goto          57
+        78: new           #6                  // class run_knapsack/Solver
+        81: dup           
+        82: iload_2       
+        83: aload         4
+        85: aload         5
+        87: invokespecial #7                  // Method run_knapsack/Solver."<init>":(I[I[I)V
+        90: astore        6
+        92: aload         6
+        94: invokevirtual #8                  // Method run_knapsack/Solver.getMaxConf:()[Z
+        97: astore        7
+        99: aload         6
+       101: invokevirtual #9                  // Method run_knapsack/Solver.getMaxPrice:()I
+       104: istore        8
+       106: aload         6
+       108: invokevirtual #10                 // Method run_knapsack/Solver.getMaxWeight:()I
+       111: istore        9
+       113: new           #11                 // class run_knapsack/Writer
+       116: dup           
+       117: ldc           #12                 // String file_out.txt
+       119: invokespecial #13                 // Method run_knapsack/Writer."<init>":(Ljava/lang/String;)V
+       122: astore        10
+       124: aload         10
+       126: iload         9
+       128: invokevirtual #14                 // Method run_knapsack/Writer.writeInt:(I)V
+       131: aload         10
+       133: bipush        32
+       135: invokevirtual #15                 // Method run_knapsack/Writer.writeChar:(C)V
+       138: aload         10
+       140: iload         8
+       142: invokevirtual #14                 // Method run_knapsack/Writer.writeInt:(I)V
+       145: aload         10
+       147: bipush        10
+       149: invokevirtual #15                 // Method run_knapsack/Writer.writeChar:(C)V
+       152: aload         7
+       154: astore        11
+       156: aload         11
+       158: arraylength   
+       159: istore        12
+       161: iconst_0      
+       162: istore        13
+       164: iload         13
+       166: iload         12
+       168: if_icmpge     211
+       171: aload         11
+       173: iload         13
+       175: baload        
+       176: istore        14
+       178: iload         14
+       180: ifeq          192
+       183: aload         10
+       185: iconst_1      
+       186: invokevirtual #14                 // Method run_knapsack/Writer.writeInt:(I)V
+       189: goto          198
+       192: aload         10
+       194: iconst_0      
+       195: invokevirtual #14                 // Method run_knapsack/Writer.writeInt:(I)V
+       198: aload         10
+       200: bipush        32
+       202: invokevirtual #15                 // Method run_knapsack/Writer.writeChar:(C)V
+       205: iinc          13, 1
+       208: goto          164
+       211: aload         10
+       213: bipush        10
+       215: invokevirtual #15                 // Method run_knapsack/Writer.writeChar:(C)V
+       218: aload         10
+       220: bipush        10
+       222: invokevirtual #15                 // Method run_knapsack/Writer.writeChar:(C)V
+       225: return        
+      LineNumberTable:
+        line 19: 0
+        line 20: 10
+        line 21: 15
+        line 22: 20
+        line 23: 25
+        line 24: 30
+        line 25: 39
+        line 24: 48
+        line 27: 54
+        line 28: 63
+        line 27: 72
+        line 30: 78
+        line 31: 92
+        line 32: 99
+        line 33: 106
+        line 34: 113
+        line 35: 124
+        line 36: 131
+        line 37: 138
+        line 38: 145
+        line 39: 152
+        line 40: 178
+        line 41: 183
+        line 43: 192
+        line 45: 198
+        line 39: 205
+        line 47: 211
+        line 48: 218
+        line 49: 225
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+              33      21     6     i   I
+              57      21     6     i   I
+             178      27    14   bit   Z
+             156      55    11  arr$   [Z
+             161      50    12  len$   I
+             164      47    13    i$   I
+               0     226     0  args   [Ljava/lang/String;
+              10     216     1    in   Lrun_knapsack/Reader;
+              15     211     2     M   I
+              20     206     3     n   I
+              25     201     4     w   [I
+              30     196     5     c   [I
+              92     134     6     s   Lrun_knapsack/Solver;
+              99     127     7  conf   [Z
+             106     120     8 price   I
+             113     113     9 weight   I
+             124     102    10   out   Lrun_knapsack/Writer;
+      StackMapTable: number_of_entries = 8
+           frame_type = 255 /* full_frame */
+          offset_delta = 33
+          locals = [ class "[Ljava/lang/String;", class run_knapsack/Reader, int, int, class "[I", class "[I", int ]
+          stack = []
+           frame_type = 250 /* chop */
+          offset_delta = 20
+           frame_type = 252 /* append */
+             offset_delta = 2
+        locals = [ int ]
+           frame_type = 250 /* chop */
+          offset_delta = 20
+           frame_type = 255 /* full_frame */
+          offset_delta = 85
+          locals = [ class "[Ljava/lang/String;", class run_knapsack/Reader, int, int, class "[I", class "[I", class run_knapsack/Solver, class "[Z", int, int, class run_knapsack/Writer, class "[Z", int, int ]
+          stack = []
+           frame_type = 252 /* append */
+             offset_delta = 27
+        locals = [ int ]
+           frame_type = 5 /* same */
+           frame_type = 255 /* full_frame */
+          offset_delta = 12
+          locals = [ class "[Ljava/lang/String;", class run_knapsack/Reader, int, int, class "[I", class "[I", class run_knapsack/Solver, class "[Z", int, int, class run_knapsack/Writer ]
+          stack = []
+
+}
