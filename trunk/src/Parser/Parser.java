@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Stack;
+import Parser.Stack;
 import javax.smartcardio.ATR;
 import myjava.StaticLibrary;
 
@@ -64,7 +64,7 @@ public class Parser {
     private MethodInfo[] methods;
     private int attributeCnt;
     private AttributeInfo[] attributes;
-    private Stack<Stack<Object>> variableStack;
+    private java.util.Stack<Stack> variableStack;
 
     public String GetClassName() {
         return constantPool[thisClass - 1].GetValue().toString();
@@ -95,7 +95,7 @@ public class Parser {
     /*public ConstantPoolElem[] getConstantPool() {
      return constantPool;
      }*/
-    public Stack<Stack<Object>> getVariableStack() {
+    public java.util.Stack<Stack> getVariableStack() {
         return variableStack;
     }
 
@@ -205,8 +205,8 @@ public class Parser {
     }
 
     public void Run() {
-        variableStack = new Stack<>();
-        variableStack.push(new Stack<>());
+        variableStack = new java.util.Stack();
+        variableStack.push(new Stack());
         // variableStack.push(new Stack<>());
         MethodInfo init = FindInit();
         MethodInfo main = FindMain();

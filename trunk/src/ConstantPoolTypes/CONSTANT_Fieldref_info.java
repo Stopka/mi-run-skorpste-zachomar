@@ -23,6 +23,7 @@ public class CONSTANT_Fieldref_info extends ConstantPoolElem {
         super(TagStatics.CONSTANT_Fieldref);
         this.classIndex = classIndex;
         this.nameAndTypeIndex = nameAndTymeIndex;
+        Heap.Heap.getHeap().registerField(this);
     }
 
     @Override
