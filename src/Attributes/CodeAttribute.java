@@ -15,9 +15,9 @@ import Instructions.ireturn;
 import Instructions.istore_;
 import Instructions.putfield;
 import Parser.Parser;
+import Parser.Stack;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Stack;
 import myjava.StaticLibrary;
 
 /**
@@ -58,12 +58,12 @@ public class CodeAttribute extends AttributeInfo {
     InstructionElem[] instructions; //derived from code
     LineNumberTableAttribute lineNumberTable;
     LocalVariableTableAttribute localVariableTable;
-    Stack<Object> localVariableStack;
+    Stack localVariableStack;
     Object returnValue;
     boolean hasReturnValue;
     private ConstantPoolElem[] pool;
 
-    public Stack<Object> getLocalVariableStack() {
+    public Stack getLocalVariableStack() {
         return localVariableStack;
     }
 
@@ -86,7 +86,7 @@ public class CodeAttribute extends AttributeInfo {
         this.pool = pool;
         returnValue = null;
         hasReturnValue = false;
-        localVariableStack = new Stack<>();
+        localVariableStack = new Stack();
         this.nameIndex = nameIndex;
         this.length = (StaticLibrary.ByteToInt(queue.poll()) << 24) + (StaticLibrary.ByteToInt(queue.poll()) << 16)
                 + (StaticLibrary.ByteToInt(queue.poll()) << 8) + StaticLibrary.ByteToInt(queue.poll());
@@ -137,7 +137,7 @@ public class CodeAttribute extends AttributeInfo {
         }
     }
 
-    public void AssignLocalVariables(Stack<Object> stack, Class[] classes) {
+    public void AssignLocalVariables(java.util.Stack<Object> stack, Class[] classes) {
         for (int j = classes.length; j >=0; j--) {
             for(LocalVariable var: localVariableTable.getLocalVariableTable()){
                 if(var.index==j){
@@ -148,7 +148,7 @@ public class CodeAttribute extends AttributeInfo {
         }
     }
 
-    public void InitVariableStack(Stack<Object> stack) {
+    public void InitVariableStack(java.util.Stack<Object> stack) {
         localVariableStack.addAll(stack);
     }
 

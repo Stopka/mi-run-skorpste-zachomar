@@ -37,6 +37,7 @@ public class LocalVariableTableAttribute extends AttributeInfo {
             nameIndex = (StaticLibrary.ByteToInt(queue.poll()) << 8) + StaticLibrary.ByteToInt(queue.poll());
             descriptorIndex = (StaticLibrary.ByteToInt(queue.poll()) << 8) + StaticLibrary.ByteToInt(queue.poll());
             index = (StaticLibrary.ByteToInt(queue.poll()) << 8) + StaticLibrary.ByteToInt(queue.poll());
+            Heap.Heap.getHeap().registerLocalVariable(this);
         }
     }
 
